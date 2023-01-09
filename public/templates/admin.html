@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administator Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../static/css/admin.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <nav class="nav">
+        <h1>Dashboard</h1>
+        <ul class="nav__list">
+            <li><a class="nav__item" href="app.html">Home</a></li>
+            <li><a class="nav__item" href="login.html">Login</a></li>
+            <li><a class="nav__item" href="register.html">Register</a></li>
+            <li><a class="nav__item" href="forgot-password.html">Forgot Password</a></li>
+        </ul>
+    </nav>
+
+
+    <main class="container">
+        <div class="search-bar">
+            <label for="search">Find a exercise:</label>
+            <input type="search" name="search-bar" placeholder="Find an exercise">
+        </div>
+        <div class="dashboard-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titlu</th>
+                        <th>Descriere</th>
+                        <th>Dificultate</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+ 
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="add-exercise-button-wrapper">
+            <button>Add exercise</button>
+        </div>
+
+        <div class="add-modal-container">
+            <div class="content">
+                <form>
+                    <div class="submit-field">
+                        <label for="id">Enter the exercise id: </label>
+                        <input class="input-exercise-id" type="text" required placeholder="Enter the ID of the exercise" name="id">
+                    </div>
+                    <div class="submit-field">
+                        <label for="name">Enter the exercise name: </label>
+                        <input class="input-exercise-name" type="text" placeholder="Enter the name of the exercise" name="name">
+                    </div>
+                    <div class="submit-field">
+                        <label for="description">Enter the exercise description: </label>
+                        <textarea class="textarea-exercise-description" name="description" id="" cols="50" rows="5"></textarea>
+                    </div>
+                    <div class="submit-field">
+                        <label for="difficulty">Enter the exercise difficulty: </label>
+                        <select name="select-exercise-difficulty" id="difficulty" name="difficulty">
+                            <option class="input-exercise-difficulty" value="easy">Easy</option>
+                            <option class="input-exercise-difficulty" value="medium">Medium</option>
+                            <option class="input-exercise-difficulty" value="intermediate">Intermediate</option>
+                        </select>
+                       
+                    </div>
+                    <button class="add-exercise-button" type="submit">Add exercise</button>
+                    <button type="reset" class="close-button">Close</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="edit-modal-container hide">
+            <div class="content">
+                <form>
+                    <div class="submit-field">
+                        <input class="input-exercise-id" type="hidden" placeholder="Enter the ID of the exercise" disabled>
+                    </div>
+                    <div class="submit-field">
+                        <label for="name">Enter the exercise name: </label>
+                        <input class="input-exercise-name" type="text" placeholder="Enter the name of the exercise">
+                    </div>
+                    <div class="submit-field">
+                        <label for="description">Enter the exercise description: </label>
+                        <textarea class="textarea-exercise-description" name="" cols="50" rows="5"></textarea>
+                    </div>
+                    <div class="submit-field">
+                        <label for="difficulty">Enter the exercise difficulty: </label>
+                        <select class="input-exercise-difficulty" id="">
+                            <option class="input-exercise-difficulty" value="easy">Easy</option>
+                            <option class="input-exercise-difficulty" value="medium">Medium</option>
+                            <option class="input-exercise-difficulty" value="itermediate">Intermediate</option>
+                        </select>
+                    </div>
+                    <button class="edit-exercise-button" type="submit">Edit exercise</button>
+                    <button type="reset" class="close-button">Close</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="delete-modal-container">
+            <div class="content">
+                <p>Are you sure you want to delete the exercise with ID <span class="exercise-id"></span>?</p>
+                <button class="yes-button">Yes</button>
+                <button class="no-button">No</button>
+            </div>
+        </div>
+    </main>
+    <script src="../static/js/exercises.js"></script>
+    <script src="../static/js/admin.js"></script>
+</body>
+</html>

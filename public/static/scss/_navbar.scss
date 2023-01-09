@@ -1,0 +1,76 @@
+a {
+    text-decoration: none;
+    color: $neutral-light-grey;
+    transition: 0.3s ease-in-out;
+}
+
+a:hover {
+    color: $background-color;
+}
+ul{
+    padding: 0;
+}
+
+.nav {
+    background-color: $primary-blue;
+    display: flex;
+    justify-content:center;
+    
+    .nav-container{
+        max-width: 1300px;
+        padding:0 1em;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include for-mobile-down{
+            flex-direction: column;
+            
+        }
+    }
+    @include for-tablet-down{
+        padding: 0 1em;
+    }
+    
+    @include for-mobile-down { 
+        align-items: center;
+        padding: 1em 2.5em;
+        text-align: center;
+    }
+    .hamburger-menu{
+        display: none;
+        @include for-mobile-down{
+            display: block;
+            position: absolute;
+            right: 1rem;
+            top:1rem;
+            cursor: pointer;
+        }
+    }
+}
+
+.nav__list {
+    list-style: none;
+    display: flex;
+    padding: 1em 0;
+    gap:40px;
+    align-items: center; 
+    @include for-mobile-down {
+        flex-direction: column;
+        display: none;
+    }
+    li {
+        padding: 0.5rem 0;
+    }
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: flex;
+    @include for-mobile-down{
+        display: block;
+    }
+}

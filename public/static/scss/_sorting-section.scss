@@ -1,0 +1,50 @@
+.sorting-section{
+    display: grid;
+    max-width: 1500px;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-self: center;
+    gap:130px;
+    padding: 2em;
+    @include for-tablet-down{
+        grid-template-columns: 1fr;
+        gap:50px;
+    }
+    @include for-mobile-down{
+        grid-template-columns: 1fr;
+        padding: 2em 0;
+        
+    }
+    .add-exercise-wrapper{
+        @include for-mobile-down{
+            justify-self: center;
+            padding-left: 0;
+        }
+    }
+    .sorting-wrapper{
+        display: flex;
+        gap: 2rem;
+        @include for-tablet-down{
+            flex-direction: column;
+        }
+        @include for-mobile-down{
+            
+        }
+    }
+    .filter-wrapper{
+        @include for-mobile-down{
+            justify-self: center;
+            padding-right: 0;
+        }
+    }
+    button{
+        border: none;
+        background-color: $primary-blue;
+        color:#fff;
+        padding:0.5em 3em;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover{
+            color: rgba(#000, 0.5);
+    }
+}

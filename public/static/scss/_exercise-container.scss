@@ -1,0 +1,23 @@
+main {
+    max-width: 1500px;
+    padding: 5em 1em;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    @include for-mobile-down{
+        width: 90%;
+        padding:1em;
+    }
+}
+main .sections-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:1em;
+
+    @include for-tablet-down{
+        grid-template-columns: 1fr 1fr;
+    }
+    @include for-mobile-down{
+        grid-template-columns: 1fr;
+    }
+}
