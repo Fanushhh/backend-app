@@ -20,6 +20,7 @@ app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
 
+
 mongoose.set("strictQuery", false);
 mongoose.connect(uri);
 
@@ -28,6 +29,7 @@ connection.once("open", () =>
   console.log("MongoDB database connection established successfully")
 );
 app.get("/", function (req, res) {
+
 	res.sendFile(`${__dirname}/public/templates/login.html`);
   });
 app.get("/:file", function (req, res) {
