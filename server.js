@@ -45,6 +45,6 @@ const port = 5000;
 
 app.use(errorHandler);
 
-app.listen(port, () => {
+app.listen(port || process.env.PORT, () => {
   console.log(`Server is running successfully on port ${port}`);
 });
