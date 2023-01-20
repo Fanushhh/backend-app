@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <script src="https://kit.fontawesome.com/820d798591.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="image-container">
+        <img
+          src="../static/images/Privacy policy-rafiki.svg"
+          alt=""
+          srcset=""
+        />
+      </div>
+      <form class="register-form"> 
+        <div class="group">
+          <input
+            type="text"
+            name="firstName"
+            placeholder="Insert first name..."
+          />
+          <p>First name field can't be empty</p>
+        </div>
+        <div class="group">
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Insert last name..."
+          />
+          <p></p>
+        </div>
+        <div class="group">
+          <input 
+          type="text" 
+          name="email" 
+          placeholder="Insert email..." />
+          <p></p>
+        </div>
+        <div class="group">
+          <input
+            type="password"
+            name="password"
+            placeholder="Insert password..."
+          />
+          <p></p>
+        </div>
+        <div class="group">
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm password..."
+          />
+          <p></p>
+        </div>
+        <button type="submit">Register</button>
+        <div class="no-account">
+            <p>
+              Already have an account?
+              <a href="../templates/login.html" class="register-link"
+                >Login here.</a
+              >
+            </p>
+            <p>
+              Forgot your password? Reset it
+              <a
+                href="../templates/forgot-password.html"
+                class="reset-password-link"
+                >here</a
+              >
+            </p>
+          </div>
+      </form>
+      
+    </div>
+    <script src="../static/js/register.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  </body>
+</html>

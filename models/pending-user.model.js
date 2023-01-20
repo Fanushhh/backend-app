@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const userTypeSchema = new Schema(
+const pendingUserSchema = new Schema(
     {
         lastName: {
             type: String,
@@ -29,6 +29,14 @@ const userTypeSchema = new Schema(
         password: {
             type: String,
             required: true
+        },
+        token:{
+            type: String,
+            required:true
+        },
+        userTypeId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'UserType'
         }
     }, 
     {
@@ -36,6 +44,6 @@ const userTypeSchema = new Schema(
     }
 );
 
-const UserType = mongoose.model('UserType', userTypeSchema);
+const pendingUser = mongoose.model('PendingUser', pendingUserSchema);
 
-module.exports = UserType;
+module.exports = pendingUser;

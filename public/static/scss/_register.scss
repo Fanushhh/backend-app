@@ -1,0 +1,27 @@
+.container{
+    .register-form{
+        height: 500px;
+    }
+    .image-container {
+        height: 250px;
+        width: 250px;
+        position: relative;
+
+        img {
+            position: absolute;
+            top: 0;
+        }
+    }
+}
+
+form {
+    .group {
+        p {
+            font-size: 12px;
+            font-style: italic;
+            display: none;
+            color:red;
+            text-align: right;
+        }
+    }
+}

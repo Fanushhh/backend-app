@@ -1,20 +1,20 @@
 const asyncHandler = require("express-async-handler");
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user.model");
+const PendingUser = require("../models/pending-user.model");
 
 router.get(
   "",
   asyncHandler(async function (_req, res) {
-    const users = await User.find();
-    res.json(users);
+    const pendingUsers = await PendingUser.find();
+    res.json(pendingUsers);
   })
 );
 
 router.get(
   "/:id",
   asyncHandler(async function (req, res) {
-    const user = await User.findById(req.params.id);
+    const user = await PendingUser.findById(req.params.id);
     try {
       if (!user) {
         res.status(404);

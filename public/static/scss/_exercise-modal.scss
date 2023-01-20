@@ -21,11 +21,12 @@
     width: 600px;
     height: 700px;
     position: relative;
+    border-radius: 5px;
     @include for-mobile-down {
         width: 90%;
     }
 
-    border-radius: 5px;
+    
 
     form {
         display: flex;
@@ -37,7 +38,7 @@
         .submit-field {
             display: flex;
             flex-direction: column;
-            text-align: center;
+            text-align: left;
             width: 100%;
         }
 
@@ -96,7 +97,7 @@
 .delete-modal-container{
     .content{
         background-color: $background-color;
-        margin: 100px auto;
+        margin: 150px auto;
         padding: 2rem;
         width: 400px;
         height: 200px;

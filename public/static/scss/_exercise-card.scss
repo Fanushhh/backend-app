@@ -1,26 +1,47 @@
+
+.sections-container{
+    text-align: left;
+    @include for-mobile-down{
+        text-align: center;
+    }
+}
+
 .exercise-container {
     background-color: $neutral-light-grey;
     color: #000;
-    width: 300px;
+    width: 270px;
     height: 50px;
     max-width: 100%;
     padding: 0.7rem 1rem;
-    margin: 0.5em 0;
+    margin: 0.5em 2em 0.5em 0;
     border-radius: 5px;
     position: relative;
     font-size: 0.9rem;
     font-weight: $font-regular;
     box-shadow: 0 5px 5px rgba(black, 0.2);
-
+    display: flex;
+    align-items: center;
+    @include for-mobile-down{
+        width: 220px;
+        text-align: left;
+    }
     .exercise-title {
         text-transform: capitalize;
         cursor: pointer;
         width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: .2s ease-in-out;
+        .exercise-difficulty{
+            font-size: 0.7rem;
+            padding-right: 3em;
+        }
     }
-    .exercise-difficulty{
-        font-size: 0.8rem;
-        padding-left: 1.2em;
+    .exercise-title:hover{
+        color: rgba(#000,0.4);
     }
+    
 
     
 
@@ -43,8 +64,13 @@
         left: 0;
         top: 110%;
         color: #000;
-        background-color: #fff;
-        padding: .5rem;
+        background-color: #000;
+        color:#fff;
+        border-radius: 3px;
+        text-align: center;
+        width: 80px;
+        font-size:12px;
+        padding: .4rem;
         z-index: 2;
     }
 
@@ -58,7 +84,7 @@
         height: 100%;
         border-radius: 0 5px 5px 0;
         background-color: $primary-blue;
-        
+        color:#fff;
         cursor: pointer;
         border: 0;
         z-index: 1;
@@ -70,9 +96,7 @@
         border-radius: 0 5px 5px 0;
         width: 50px;
         height: 100%;
-        opacity: 1;
         background-color: $neutral-blue;
-        
         cursor: pointer;
         transition: .3s ease-in-out;
         left: 8px;
@@ -87,7 +111,7 @@
     }
 
     .edit-button:hover {
-        color: #fff;
+        color:rgba( #fff, 0.6);
 
     }
 
@@ -95,13 +119,8 @@
         transform: translateX(30px);
         color: #fff;
     }
-    @include for-mobile-down{
-        width: 260px;
-    }
+    
 
-}
-.exercise-container:hover {
-    color: rgba(black, 0.4);
 }
 
 
@@ -110,13 +129,30 @@
 .intermediate-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-
+    align-items: flex-start;
+    margin: 1.5em 0;
     h2 {
         padding-bottom: 0.3em;
         border-bottom: 1px solid rgba($neutral-light-grey, 0.2);
         width: 300px;
+        @include for-mobile-down{
+            width: 250px;
+        }
     }
+    @include for-mobile-down{
+        align-items: flex-start;
+    }
+}
+
+
+.medium-container{
+    align-items: center;
+    @include for-mobile-down{
+        align-items: flex-start;
+    }
+}
+.intermediate-container{
+    align-items: flex-end;
     @include for-mobile-down{
         align-items: flex-start;
     }

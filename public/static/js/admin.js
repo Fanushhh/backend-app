@@ -9,9 +9,10 @@ const deleteExerciseCloseButton = deleteModalContainer.querySelector(".close-but
 const addModalForm = addModalContainer.querySelector("form");
 const editModalForm = editModalContainer.querySelector("form");
 const deleteModalForm = deleteModalContainer.querySelector('form');
-const deleteButton = document.querySelectorAll(".delete-button");
 const editButtons = document.querySelectorAll(".edit-button");
 const confirmDeleteButton = document.querySelectorAll('.yes-button');
+const refuseDeleteButton = document.querySelectorAll('.no-button');
+
 const EXERCISE_DIFFICULTY_COLORS = Object.freeze({
   easy: "green",
   medium: "blue",
@@ -97,6 +98,12 @@ function generateExercises() {
 
   const deleteButtons = document.querySelectorAll(".delete-button");
 
+  [...deleteButtons].map((button) => 
+      button.addEventListener('click', function(){
+        deleteModalContainer.style.display = 'block';
+      })
+  );
+
   [...deleteButtons].map((button) =>
     button.addEventListener("click", async function () {
       const exerciseContainer = button.closest(".exercise-container");
@@ -106,6 +113,11 @@ function generateExercises() {
       deleteModalContainer.style.display = 'block';
     })
   );
+  [...refuseDeleteButton].map((button) => 
+    button.addEventListener('click', function(){
+      deleteModalContainer.style.display = 'none';
+    })
+  )
 
 
 }
@@ -126,6 +138,7 @@ addModalCloseButton.addEventListener("click", function () {
 editModalCloseButton.addEventListener("click", function () {
   editModalContainer.style.display = "none";
 });
+
 deleteExerciseCloseButton.addEventListener('click', function(){
   deleteModalContainer.style.display = 'none';
 })
@@ -153,8 +166,9 @@ addModalForm.addEventListener("submit", function (event) {
       },
       body: JSON.stringify(data),
     });
+    location.reload();
   }
-  location.reload();
+  
 });
 
 editModalForm.addEventListener("submit", function (event) {
@@ -206,5 +220,5 @@ deleteModalForm.addEventListener('submit', async function(event){
   });
   
   location.reload();
-})
+});
 
