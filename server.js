@@ -41,10 +41,10 @@ app.use("/api/exercises-group-by-difficulty", exercisesGroupByDifficultyRouter);
 app.use("/api/exercises-group-by-category", exercisesGroupByCategoryRouter);
 // app.use('/resources', resourcesRouter);
 
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(errorHandler);
 
-app.listen(port || process.env.PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server is running successfully on port ${port}`);
 });
