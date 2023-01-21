@@ -1,4 +1,4 @@
-const FIRST_NAME_ERRORS = Object.freeze({
+export const FIRST_NAME_ERRORS = Object.freeze({
   REQUIRED: "Prenumele este obligatoriu",
   MIN_LENGTH: "Prenumele trebuie sa aiba minim 2 litere",
   MAX_LENGTH: "Prenumele trebuie sa aiba maxim 30 litere",
@@ -6,7 +6,7 @@ const FIRST_NAME_ERRORS = Object.freeze({
   ONLY_SPACES: "Prenumele nu poate contine doar spatii",
 });
 
-const EMAIL_ERRORS = Object.freeze({
+export const EMAIL_ERRORS = Object.freeze({
   REQUIRED: "Email-ul este obligatoriu",
   MIN_LENGTH: "Email-ul trebuie sa aiba minim 6 caractere",
   MAX_LENGTH: "Email-ul trebuie sa aiba maxim 100 caractere",
@@ -26,9 +26,11 @@ const PASSWORD_ERRORS = Object.freeze({
 
 const PASSWORDS_NOT_THE_SAME = "Parolele nu coincid";
 
-module.exports = {
-  FIRST_NAME_ERRORS,
-  EMAIL_ERRORS,
-  PASSWORD_ERRORS,
-  PASSWORDS_NOT_THE_SAME,
-};
+
+// export {FIRST_NAME_ERRORS, EMAIL_ERRORS};
+// module.exports = {
+//   FIRST_NAME_ERRORS,
+//   EMAIL_ERRORS,
+//   PASSWORD_ERRORS,
+//   PASSWORDS_NOT_THE_SAME,
+// };

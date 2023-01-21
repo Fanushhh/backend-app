@@ -14,16 +14,16 @@ router.get(
 router.get(
   "/:id",
   asyncHandler(async function (req, res) {
-    const user = await PendingUser.findById(req.params.id);
+    const pendingUser = await PendingUser.findById(req.params.id);
     try {
-      if (!user) {
+      if (!pendingUser) {
         res.status(404);
         res.json({
-          message: `There is no user with id ${req.params.id}`,
+          message: `There is no pending user with that id ${req.params.id}`,
           severity: "error",
         });
       } else {
-        res.json(user);
+        res.json(pendingUser);
       }
     } catch {
       res.status = 500;
@@ -36,25 +36,25 @@ router.post(
   "",
   asyncHandler(async function (req, res) {
     if (Array.isArray(req.body)) {
-      for (const userData of req.body) {
-        const { firstName, lastName, email, password } = userData;
-        const user = await User.findOne({ email });
+      for (const pendingUserData of req.body) {
+        const { firstName, lastName, email, password } = pendingUserData;
+        const pendingUser = await PendingUser.findOne({ email });
 
-        if (user) {
+        if (pendingUser) {
           res.status(409);
           res.json({
-            message: `Exista deja un user cu email-ul ${email}`,
+            message: `There's already a pending user with that email ${email}`,
             severity: "error",
           });
           break;
         } else {
-          const newUser = new User({
+          const newPendingUser = new PendingUser({
             firstName,
             lastName,
             email,
             password,
           });
-          await newUser.save();
+          await newPendingUser.save();
         }
       }
       res.json({
@@ -63,22 +63,22 @@ router.post(
       });
     } else {
       const { firstName, lastName, email, password } = req.body;
-      const user = await User.findOne({ email });
+      const pendingUser = await User.findOne({ email });
 
-      if (user) {
+      if (pendingUser) {
         res.status(409);
         res.json({
-          message: `Exista deja un user cu email-ul ${email}`,
+          message: `There's already a user pending registration with that email ${email}`,
           severity: "error",
         });
       } else {
-        const newUser = new User({
+        const pendingNewUser = new PendingUser({
           firstName,
           lastName,
           email,
           password,
         });
-        await newUser.save();
+        await pendingNewUser.save();
       }
       res.json({
         message: `Users were created successfully!`,
@@ -92,32 +92,32 @@ router.put(
   "/:id",
   asyncHandler(async function (req, res) {
     const { lastName, firstName, email, password } = req.body;
-    const user = await User.findById(req.params.id);
+    const pendingUser = await PendingUser.findById(req.params.id);
 
-    if (!user) {
+    if (!pendingUser) {
       res.status(404);
       res.json({
-        message: `There is no user with id ${req.params.id}`,
+        message: `There is no user pending with id ${req.params.id}`,
         severity: "error",
       });
     } else {
-      if (lastName) user.lastName = lastName;
-      if (firstName) user.firstName = firstName;
-      if (email) user.email = email;
-      if (password) user.password = password;
-      await user.save();
+      if (lastName) pendingUser.lastName = lastName;
+      if (firstName) pendingUser.firstName = firstName;
+      if (email) pendingUser.email = email;
+      if (password) pendingUser.password = password;
+      await pendingUser.save();
     }
     res.json({
-      message: `The user with the id ${req.params.id} has been changed`,
+      message: `The user with the id ${req.params.id} has been modified`,
       severity: "success",
     });
   })
-);
+); // ca si side note, nu sunt sigur ca avem nevoie de metoda de put pentru un pending User avand in vedere ca nu este creat inca n-ar trebui sa poti face modificari mid registration
 
 router.delete(
   "",
   asyncHandler(async function (_req, res) {
-    await User.deleteMany({});
+    await PendingUser.deleteMany({});
     res.json({
       message: "All the users have been succesfully deleted!",
       severity: "success",
@@ -128,16 +128,16 @@ router.delete(
 router.delete(
   "/:id",
   asyncHandler(async function (req, res) {
-    const user = await User.findById(req.params.id);
+    const pendingUser = await PendingUser.findById(req.params.id);
 
-    if (!user) {
+    if (!pendingUser) {
       res.status(404);
       res.json({
-        message: `There is no user with id ${req.params.id}`,
+        message: `There is no pending user with id ${req.params.id}`,
         severity: "error",
       });
     } else {
-      await user.delete();
+      await pendingUser.delete();
       res.json({
         message: `User with the id ${req.params.id} has been deleted`,
         severity: "success",

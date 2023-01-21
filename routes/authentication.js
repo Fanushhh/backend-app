@@ -59,33 +59,31 @@ router.post(
 
     const token = generateActivateToken(email);
 
-    console.log(`http://127.0.0.1:5000/templates/activate.html?token=${token}`);
-
     sendEmail(
       [email],
       `[${process.env.MAIL_APP}] User activation`,
       `For activation of your user account, you need to access the following link http://127.0.0.1:5000/templates/activate.html?token=${token}`
     );
 
-    // const hashedPassword = await generatePasswordHash(password);
+    const hashedPassword = await generatePasswordHash(password);
 
-    // let userTypeClient = await UserType.findOne({ name: "client" });
+    let userTypeClient = await UserType.findOne({ name: "client" });
 
-    // if (!userTypeClient) {
-    //   const newUserType = new UserType({ name: "client" });
-    //   userTypeClient = await newUserType.save();
-    // }
+    if (!userTypeClient) {
+      const newUserType = new UserType({ name: "client" });
+      userTypeClient = await newUserType.save();
+    }
 
-    // const newPendingUser = new PendingUser({
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   password: hashedPassword,
-    //   token,
-    //   userTypeId: userTypeClient._id,
-    // });
+    const newPendingUser = new PendingUser({
+      firstName,
+      lastName,
+      email,
+      password: hashedPassword,
+      token,
+      userTypeId: userTypeClient._id,
+    });
 
-    // await newPendingUser.save();
+    await newPendingUser.save();
 
     res.json({
       message: "You registered successfully, open email to active the account!",
@@ -113,7 +111,7 @@ router.post(
       );
     }
 
-    const user = await User.findOne({ email });
+    const user = await PendingUser.findOne({ email });
 
     if (!user) {
       throw new NoEntityFoundException("Nu exista niciun user cu acest email!");
