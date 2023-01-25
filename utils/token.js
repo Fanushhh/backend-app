@@ -6,4 +6,10 @@ const generateActivateToken = (email) => {
   });
 };
 
-module.exports = { generateActivateToken };
+const generateAuthToken = (userId) => {
+  return jwt.sign({ userId }, process.env.JWT_AUTH_TOKEN_SECRET, {
+    expiresIn: "7d",
+  });
+};
+
+module.exports = { generateActivateToken, generateAuthToken };

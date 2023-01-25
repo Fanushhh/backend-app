@@ -1,0 +1,103 @@
+.exercise-page-container{
+    display: flex;
+    flex-direction: row;
+    gap:1rem;
+    .exercise-description-container{
+        width: 50rem;
+        background-color: $background-color-2;
+        border-radius: 20px;
+        padding:1rem 2rem;
+        resize: both;
+        
+        .exercise-description{
+            
+            h1, h2, p{
+                padding: 0.5rem 0;
+            }
+            h1, h2{
+                border-bottom: 1px solid green;
+                width: fit-content;
+            }
+            P{
+                font-size: 0.8rem;
+            }
+        }
+        .exercise-sample-input{
+            label{
+                display: inline-block;
+                margin: 1rem 0;
+            }
+            .input, .output{
+                margin-bottom: 1rem;
+                background-color: black;
+                padding: 2rem 1rem;
+                font-family: $font-coding;
+                border-radius: 5px;
+            }
+            .input{
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+        }
+        .exercise-hints{
+            .hint{
+                margin: 1rem 0;
+                background-color: $background-color;
+            }
+            .hint-title{
+                
+                padding: 0.5em 1em;
+                cursor: pointer;
+                position: relative;
+            }
+            .hint-title::after{
+                content: "";
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                top:0.9rem;
+                right:1rem;
+                border-left: 3px solid $neutral-light-grey;
+                border-top: 3px solid $neutral-light-grey;
+                border-bottom:none;
+                border-right:none;
+                z-index: 3;
+                transform: rotate(45deg);
+                transition: .3s ease-in-out;
+            }
+            .hint-title:hover::after{
+                transform: rotate(-135deg);
+
+            }
+            .hint-desc{
+                display: none;
+                padding: 0.5em 1em;
+                transition: 1s ease-in-out;
+            }
+            .hint-desc.show{
+                display: block;
+                
+            }
+        }
+    }
+    .exercise-solution-container{
+        width: 50rem;
+        .exercise-solution-input{
+            textarea{
+                width: 100%;
+                background-color: $background-color-2;
+                border: none;                
+                resize: none;
+                padding:1rem;
+                color:#fff;
+                font-family: $font-coding;
+                border-radius: 20px;
+            }
+            textarea:focus{
+                outline: none;
+            }
+        }
+    }
+}

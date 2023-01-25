@@ -7,7 +7,7 @@ const AlreadyExistsException = require("../exceptions/already-exists-exception")
 const InactiveUserException = require("../exceptions/inactive-user-exception");
 const MissingFieldException = require("../exceptions/missing-field-exception");
 
-const errorHandler = (err, req, res, next) => {
+const errorMiddleware = (err, req, res, next) => {
     // console.log(err);
     // console.log(req);
     // console.log(res);
@@ -36,4 +36,4 @@ const errorHandler = (err, req, res, next) => {
     next();
 }
 
-module.exports = errorHandler
+module.exports = errorMiddleware;

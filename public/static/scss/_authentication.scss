@@ -55,7 +55,11 @@
             color: black;
         }
 
-        button:hover {
+        button:disabled:hover {
+            cursor: default;
+        }
+
+        button:not(:disabled):hover {
             color: #000;
             background-color: rgba($primary-blue, 0.3);
             border: 2px solid black;

@@ -58,7 +58,7 @@ router.post(
         }
       }
       res.json({
-        message: `Users were created successfully!`,
+        message: `Pending users were created successfully!`,
         severity: "success",
       });
     } else {
@@ -81,7 +81,7 @@ router.post(
         await pendingNewUser.save();
       }
       res.json({
-        message: `Users were created successfully!`,
+        message: `Pending users were created successfully!`,
         severity: "success",
       });
     }
@@ -97,7 +97,7 @@ router.put(
     if (!pendingUser) {
       res.status(404);
       res.json({
-        message: `There is no user pending with id ${req.params.id}`,
+        message: `There is no pending user with id ${req.params.id}`,
         severity: "error",
       });
     } else {
@@ -108,7 +108,7 @@ router.put(
       await pendingUser.save();
     }
     res.json({
-      message: `The user with the id ${req.params.id} has been modified`,
+      message: `The pending user with the id ${req.params.id} has been modified`,
       severity: "success",
     });
   })
@@ -119,7 +119,7 @@ router.delete(
   asyncHandler(async function (_req, res) {
     await PendingUser.deleteMany({});
     res.json({
-      message: "All the users have been succesfully deleted!",
+      message: "All the pending users have been succesfully deleted!",
       severity: "success",
     });
   })
@@ -139,7 +139,7 @@ router.delete(
     } else {
       await pendingUser.delete();
       res.json({
-        message: `User with the id ${req.params.id} has been deleted`,
+        message: `Pending user with the id ${req.params.id} has been deleted`,
         severity: "success",
       });
     }

@@ -1,6 +1,18 @@
 .container{
     .register-form{
         height: 500px;
+        button{
+            background-color:gray;
+            
+        }
+        button:disabled {
+            background-color:gray;
+            color:#fff;
+        }
+        button:not(:disabled):hover{
+            border: none;
+            color:red;
+        }
     }
     .image-container {
         height: 250px;

@@ -2,6 +2,7 @@
   1. Use a more-intuitive box-sizing model.
 */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap");
 *,
 *::before,
 *::after {
@@ -590,7 +591,10 @@ main .sections-container {
   margin-top: 20px;
   color: black;
 }
-.container form button:hover {
+.container form button:disabled:hover {
+  cursor: default;
+}
+.container form button:not(:disabled):hover {
   color: #000;
   background-color: rgba(59, 105, 120, 0.3);
   border: 2px solid black;
@@ -612,6 +616,17 @@ main .sections-container {
 
 .container .register-form {
   height: 500px;
+}
+.container .register-form button {
+  background-color: gray;
+}
+.container .register-form button:disabled {
+  background-color: gray;
+  color: #fff;
+}
+.container .register-form button:not(:disabled):hover {
+  border: none;
+  color: red;
 }
 .container .image-container {
   height: 250px;
@@ -678,6 +693,98 @@ form .group p {
     transform: rotate(1turn);
   }
 }
+.exercise-page-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.exercise-page-container .exercise-description-container {
+  width: 50rem;
+  background-color: rgb(22, 44, 56);
+  border-radius: 20px;
+  padding: 1rem 2rem;
+  resize: both;
+}
+.exercise-page-container .exercise-description-container .exercise-description h1, .exercise-page-container .exercise-description-container .exercise-description h2, .exercise-page-container .exercise-description-container .exercise-description p {
+  padding: 0.5rem 0;
+}
+.exercise-page-container .exercise-description-container .exercise-description h1, .exercise-page-container .exercise-description-container .exercise-description h2 {
+  border-bottom: 1px solid green;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.exercise-page-container .exercise-description-container .exercise-description P {
+  font-size: 0.8rem;
+}
+.exercise-page-container .exercise-description-container .exercise-sample-input label {
+  display: inline-block;
+  margin: 1rem 0;
+}
+.exercise-page-container .exercise-description-container .exercise-sample-input .input, .exercise-page-container .exercise-description-container .exercise-sample-input .output {
+  margin-bottom: 1rem;
+  background-color: black;
+  padding: 2rem 1rem;
+  font-family: "Source Code Pro", sans-serif;
+  border-radius: 5px;
+}
+.exercise-page-container .exercise-description-container .exercise-sample-input .input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.exercise-page-container .exercise-description-container .exercise-hints .hint {
+  margin: 1rem 0;
+  background-color: rgb(32, 64, 81);
+}
+.exercise-page-container .exercise-description-container .exercise-hints .hint-title {
+  padding: 0.5em 1em;
+  cursor: pointer;
+  position: relative;
+}
+.exercise-page-container .exercise-description-container .exercise-hints .hint-title::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 0.9rem;
+  right: 1rem;
+  border-left: 3px solid rgb(228, 227, 227);
+  border-top: 3px solid rgb(228, 227, 227);
+  border-bottom: none;
+  border-right: none;
+  z-index: 3;
+  transform: rotate(45deg);
+  transition: 0.3s ease-in-out;
+}
+.exercise-page-container .exercise-description-container .exercise-hints .hint-title:hover::after {
+  transform: rotate(-135deg);
+}
+.exercise-page-container .exercise-description-container .exercise-hints .hint-desc {
+  display: none;
+  padding: 0.5em 1em;
+  transition: 1s ease-in-out;
+}
+.exercise-page-container .exercise-description-container .exercise-hints .hint-desc.show {
+  display: block;
+}
+.exercise-page-container .exercise-solution-container {
+  width: 50rem;
+}
+.exercise-page-container .exercise-solution-container .exercise-solution-input textarea {
+  width: 100%;
+  background-color: rgb(22, 44, 56);
+  border: none;
+  resize: none;
+  padding: 1rem;
+  color: #fff;
+  font-family: "Source Code Pro", sans-serif;
+  border-radius: 20px;
+}
+.exercise-page-container .exercise-solution-container .exercise-solution-input textarea:focus {
+  outline: none;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   font-size: 0.937rem;

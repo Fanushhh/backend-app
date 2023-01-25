@@ -1,5 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
+const authMiddleware = require("../middleware/auth-middleware");
 const Exercise = require("../models/exercise.model");
 const router = express.Router();
 
@@ -35,34 +36,33 @@ router.get(
 
 router.post(
   "",
+  authMiddleware,
   asyncHandler(async function (req, res) {
     const { id, name, difficulty, description } = req.body;
 
-    try {
-      const exercise = await Exercise.findById(id);
-      if (exercise) {
-        res.status(409);
-        res.json({
-          message: `There is already an exercise with ID ${id}!`,
-          severity: "error",
-        });
-      } else {
-        const newExercise = new Exercise({
-          _id: id,
-          name,
-          difficulty,
-          description,
-        });
-        await newExercise.save();
-        res.json({
-          message: "The exercise has been added to the database!",
-          severity: "success",
-        });
-      }
-    } catch (error) {
-      res.status = 500;
-      res.json({ error: error.message, severity: "error" });
+    const exercise = await Exercise.findById(id);
+    if (exercise) {
+      res.status(409);
+      res.json({
+        message: `There is already an exercise with ID ${id}!`,
+        severity: "error",
+      });
+      return;
     }
+
+    const newExercise = new Exercise({
+      _id: id,
+      name,
+      difficulty,
+      description,
+    });
+
+    await newExercise.save();
+
+    res.json({
+      message: "The exercise has been added to the database!",
+      severity: "success",
+    });
   })
 );
 
