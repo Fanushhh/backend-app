@@ -144,11 +144,11 @@ router.post(
     //   expires: getCookieExpireDate({ weeks: 1 }),
     // });
 
-    // res.json({
-    //   message: "Te-ai autentificat cu succes",
-    //   severity: "success",
-    //   user: user,
-    // });
+    res.json({
+      message: "Te-ai autentificat cu succes",
+      severity: "success",
+      user: user,
+    });
   })
 );
 
