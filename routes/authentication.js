@@ -65,12 +65,12 @@ router.post(
 
     const token = generateActivateToken(email);
 
-    console.log(`http://127.0.0.1:${process.env.PORT}/templates/activate.html?token=${token}`);
+    console.log(`https://code-learn-v1.herokuapp.com/templates/activate.html?token=${token}`);
 
     sendEmail(
       [email],
       `[${process.env.MAIL_APP}] User activation`,
-      `For activation of your user account, you need to access the following link http://127.0.0.1:${process.env.PORT}/templates/activate.html?token=${token}`
+      `For activation of your user account, you need to access the following link https://code-learn-v1.herokuapp.com/templates/activate.html?token=${token}`
     );
 
     const hashedPassword = await generatePasswordHash(password);
