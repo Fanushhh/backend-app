@@ -31,7 +31,7 @@ connection.once("open", () =>
 );
 
 app.get("/", function (req, res) {
-  res.sendFile(`${__dirname}/public/templates/login.html`);
+  res.sendFile(`${__dirname}/public/templates/admin.html`);
 });
 app.get("/:file", function (req, res) {
   const file = req.params.file;

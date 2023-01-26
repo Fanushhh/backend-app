@@ -129,7 +129,7 @@ router.post(
       throw new UnauthorizedAccessException("Parola invalida!");
 
     const token = generateAuthToken(user.id);
-
+    console.log(token)
     const newUserToken = new UserToken({
       userId: user._id,
       expireDate: getCookieExpireDate({ days: 7 }),
