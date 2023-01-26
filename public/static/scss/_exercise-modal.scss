@@ -16,10 +16,9 @@
 
 .content {
     background-color: $background-color;
-    margin: 100px auto;
+    margin: 2rem auto;
     padding: 2rem;
     width: 600px;
-    height: 700px;
     position: relative;
     border-radius: 5px;
     @include for-mobile-down {
@@ -30,7 +29,6 @@
 
     form {
         display: flex;
-        
         flex-direction: column;
         gap: 30px;
         align-items: center;
@@ -40,6 +38,9 @@
             flex-direction: column;
             text-align: left;
             width: 100%;
+            @include for-mobile-down{
+                width: 90%;
+            }
         }
 
         input,

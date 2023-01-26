@@ -301,17 +301,12 @@ ul {
   .easy-container,
 .medium-container,
 .intermediate-container {
-    align-items: flex-start;
+    align-items: center;
   }
 }
 
 .medium-container {
   align-items: center;
-}
-@media screen and (max-width: 700px) {
-  .medium-container {
-    align-items: flex-start;
-  }
 }
 
 .intermediate-container {
@@ -319,7 +314,7 @@ ul {
 }
 @media screen and (max-width: 700px) {
   .intermediate-container {
-    align-items: flex-start;
+    align-items: center;
   }
 }
 
@@ -443,10 +438,9 @@ main .sections-container {
 
 .content {
   background-color: rgb(32, 64, 81);
-  margin: 100px auto;
+  margin: 2rem auto;
   padding: 2rem;
   width: 600px;
-  height: 700px;
   position: relative;
   border-radius: 5px;
 }
@@ -466,6 +460,11 @@ main .sections-container {
   flex-direction: column;
   text-align: left;
   width: 100%;
+}
+@media screen and (max-width: 700px) {
+  .content form .submit-field {
+    width: 90%;
+  }
 }
 .content form input,
 .content form textarea {

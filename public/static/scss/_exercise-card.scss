@@ -140,21 +140,19 @@
         }
     }
     @include for-mobile-down{
-        align-items: flex-start;
+        align-items: center;
     }
 }
 
 
 .medium-container{
     align-items: center;
-    @include for-mobile-down{
-        align-items: flex-start;
-    }
+    
 }
 .intermediate-container{
     align-items: flex-end;
     @include for-mobile-down{
-        align-items: flex-start;
+        align-items: center;
     }
 }
 
