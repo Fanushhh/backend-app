@@ -1,4 +1,4 @@
-const forgotPasswordFormContainer = document.querySelector('form')
+const forgotPasswordFormContainer = document.querySelector('form');
 const forgotPasswordInput = forgotPasswordFormContainer.querySelector('input');
 
 
