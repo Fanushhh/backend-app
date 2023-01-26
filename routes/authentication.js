@@ -128,21 +128,21 @@ router.post(
     if (!(await bcrypt.compare(password, user.password)))
       throw new UnauthorizedAccessException("Parola invalida!");
 
-    // const token = generateAuthToken(user.id);
+    const token = generateAuthToken(user.id);
 
-    // const newUserToken = new UserToken({
-    //   userId: user._id,
-    //   expireDate: getCookieExpireDate({ days: 7 }),
-    //   token,
-    // });
+    const newUserToken = new UserToken({
+      userId: user._id,
+      expireDate: getCookieExpireDate({ days: 7 }),
+      token,
+    });
 
-    // await newUserToken.save();
+    await newUserToken.save();
 
-    // res.cookie("accessToken", JSON.stringify(token), {
-    //   secure: true,
-    //   httpOnly: true,
-    //   expires: getCookieExpireDate({ weeks: 1 }),
-    // });
+    res.cookie("accessToken", JSON.stringify(token), {
+      secure: true,
+      httpOnly: true,
+      expires: getCookieExpireDate({ weeks: 1 }),
+    });
 
     res.json({
       message: "Te-ai autentificat cu succes",
