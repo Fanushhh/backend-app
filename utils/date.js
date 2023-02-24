@@ -10,4 +10,4 @@ const getCookieExpireDate = ({
   return currentDate;
 };
 
-module.exports = { getCookieExpireDate };
+export { getCookieExpireDate };

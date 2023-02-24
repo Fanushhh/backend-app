@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
 const generateActivateToken = (email) => {
   return jwt.sign({ email }, process.env.JWT_ACTIVATE_TOKEN_SECRET, {
@@ -12,4 +12,4 @@ const generateAuthToken = (userId) => {
   });
 };
 
-module.exports = { generateActivateToken, generateAuthToken };
+export { generateActivateToken, generateAuthToken };

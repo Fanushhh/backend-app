@@ -25,4 +25,3 @@ export const PASSWORD_ERRORS = Object.freeze({
 });
 
 export const PASSWORDS_NOT_THE_SAME = "Parolele nu coincid";
-

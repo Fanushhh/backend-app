@@ -757,20 +757,22 @@ form .group p {
   transition: 0.3s ease-in-out;
 }
 .exercise-page-container .exercise-description-container .exercise-hints .hint-title:hover::after {
-  transform: rotate(-135deg);
+  transform: rotate(225deg);
 }
 .exercise-page-container .exercise-description-container .exercise-hints .hint-desc {
   display: none;
-  padding: 0.5em 1em;
-  transition: 1s ease-in-out;
+  padding: 1rem;
+  opacity: 0;
 }
 .exercise-page-container .exercise-description-container .exercise-hints .hint-desc.show {
+  opacity: 1;
   display: block;
 }
-.exercise-page-container .exercise-solution-container {
+
+.exercise-solution-container {
   width: 50rem;
 }
-.exercise-page-container .exercise-solution-container .exercise-solution-input textarea {
+.exercise-solution-container .exercise-solution-input textarea {
   width: 100%;
   background-color: rgb(22, 44, 56);
   border: none;
@@ -780,7 +782,7 @@ form .group p {
   font-family: "Source Code Pro", sans-serif;
   border-radius: 20px;
 }
-.exercise-page-container .exercise-solution-container .exercise-solution-input textarea:focus {
+.exercise-solution-container .exercise-solution-input textarea:focus {
   outline: none;
 }
 

@@ -1,7 +1,8 @@
-const asyncHandler = require("express-async-handler");
-const express = require("express");
-const router = express.Router();
-const PendingUser = require("../models/pending-user.model");
+import { Router } from "express";
+import asyncHandler from "express-async-handler";
+import PendingUser from "../../models/pending-user.js";
+
+const router = Router();
 
 router.get(
   "",
@@ -146,4 +147,4 @@ router.delete(
   })
 );
 
-module.exports = router;
+export default router;

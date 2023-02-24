@@ -1,7 +1,5 @@
-class MissingFieldException extends Error {
-    constructor(message) {
-        super(message);
-    }
+export class MissingFieldException extends Error {
+  constructor(message) {
+    super(message);
+  }
 }
-
-module.exports = MissingFieldException;

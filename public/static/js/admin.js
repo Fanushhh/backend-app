@@ -24,15 +24,17 @@ function getExerciseHTML(exercise) {
 
   return `
     <div class="exercise-container" data-id="${_id}">
-      <p class="exercise-title">
-        ${name}
-        <span 
-          class="exercise-difficulty" 
-          style="color: ${EXERCISE_DIFFICULTY_COLORS[difficulty]}"
-        >
-          ${difficulty}
-        </span>
-      </p>
+      <a href="/exercises/${_id}">
+        <p class="exercise-title">
+          ${name}
+          <span 
+            class="exercise-difficulty" 
+            style="color: ${EXERCISE_DIFFICULTY_COLORS[difficulty]}"
+          >
+            ${difficulty}
+          </span>
+        </p>
+      </a>
       <div class="buttons-container">
         <div class="button-wrapper">
           <button data-hover="Edit me" class="edit-button">
@@ -111,6 +113,7 @@ function generateExercises() {
       deleteModalContainer.style.display = "block";
     })
   );
+
   [...refuseDeleteButton].map((button) =>
     button.addEventListener("click", function () {
       deleteModalContainer.style.display = "none";

@@ -1,8 +1,9 @@
-const express = require("express");
-const asyncHandler = require("express-async-handler");
-const authMiddleware = require("../middleware/auth-middleware");
-const Exercise = require("../models/exercise.model");
-const router = express.Router();
+import { Router } from "express";
+import Exercise from "../../models/exercise.js";
+import asyncHandler from "express-async-handler";
+import authMiddleware from "../../middleware/auth-middleware.js";
+
+const router = Router();
 
 router.get(
   "",
@@ -11,6 +12,23 @@ router.get(
     res.json(exercises);
   })
 );
+
+router.get('/group-by-difficulty', asyncHandler( async function(req, res){
+  const exercise = await Exercise.find({});
+
+  const exercisesGroupedByDifficulty = exercise.reduce((object, exercise) => {
+    if(exercise.difficulty in object)
+    {
+      object[exercise.difficulty].push(exercise);
+    }
+    else
+    {
+      object[exercise.difficulty] = [exercise];
+    }
+    return object;
+  }, {})
+  res.json(exercisesGroupedByDifficulty);
+}))
 
 router.get(
   "/:id",
@@ -36,7 +54,7 @@ router.get(
 
 router.post(
   "",
-  authMiddleware,
+ // authMiddleware,
   asyncHandler(async function (req, res) {
     const { id, name, difficulty, description } = req.body;
 
@@ -130,4 +148,4 @@ router.delete(
   })
 );
 
-module.exports = router;
+export default router;

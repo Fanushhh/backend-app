@@ -1,7 +1,8 @@
-const express = require('express');
-const asyncHandler = require('express-async-handler');
-const Exercise = require('../models/exercise.model');
-const router = express.Router();
+
+import { Router } from "express";
+import asyncHandler from "express-async-handler";
+import Exercise from "../../models/exercise.js";
+import router from "./exercises-group-by-difficulty.js";
 
 
 router.get('/:category', asyncHandler(async function(req, res){
@@ -14,4 +15,4 @@ router.get('/:category', asyncHandler(async function(req, res){
     res.json(exercisesGroupedByCategory);
 }))
 
-module.exports = router;
+export default router;

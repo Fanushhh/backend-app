@@ -5,7 +5,10 @@
         text-align: center;
     }
 }
-
+a p{
+    color:black;
+    text-decoration: none;
+}
 .exercise-container {
     background-color: $neutral-light-grey;
     color: #000;
@@ -25,6 +28,7 @@
         width: 220px;
         text-align: left;
     }
+    
     .exercise-title {
         text-transform: capitalize;
         cursor: pointer;

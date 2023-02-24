@@ -1,7 +1,7 @@
-class UnauthorizedAccessException extends Error {
-    constructor(message) {
-        super(message);
-    }
+export default class UnauthorizedAccessException extends Error {
+  constructor(message) {
+    super(message);
+  }
 }
 
-module.exports = UnauthorizedAccessException;
+

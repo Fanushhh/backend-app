@@ -11,7 +11,7 @@ import {
   checkMaxLength,
   checkMinLength,
   checkOnlySpaces,
-  checkValidEmail
+  checkValidEmail,
 } from "./utils/form-validations.js";
 import { post } from "./utils/requests.js";
 
@@ -20,7 +20,9 @@ const lastNameInput = form.querySelector("input[name='lastName']");
 const firstNameInput = form.querySelector("input[name='firstName']");
 const emailInput = form.querySelector("input[name='email']");
 const passwordInput = form.querySelector("input[name='password']");
-const confirmPasswordInput = form.querySelector("input[name='confirmPassword']");
+const confirmPasswordInput = form.querySelector(
+  "input[name='confirmPassword']"
+);
 const submitButton = form.querySelector("button[type='submit']");
 
 let lastNameErrorText = "";
@@ -87,11 +89,12 @@ firstNameInput.addEventListener("input", function (event) {
 
   updateSubmitButtonDisabled();
 });
+
 lastNameInput.addEventListener("input", function (event) {
   const errorField = event.target.nextElementSibling;
 
   errorField.style.display = "none";
-    lastNameErrorText = "";
+  lastNameErrorText = "";
 
   if (!checkMinLength(event.target.value, 3))
     lastNameErrorText = NAME_ERRORS.MIN_LENGTH;
@@ -115,9 +118,10 @@ lastNameInput.addEventListener("input", function (event) {
 
   updateSubmitButtonDisabled();
 });
+
 emailInput.addEventListener("input", function (event) {
   const errorField = event.target.nextElementSibling;
-  console.log(emailInput.value.length)
+  console.log(emailInput.value.length);
   errorField.style.display = "none";
   emailErrorText = "";
 
@@ -130,12 +134,10 @@ emailInput.addEventListener("input", function (event) {
   if (checkOnlySpaces(event.target.value))
     emailErrorText = EMAIL_ERRORS.ONLY_SPACES;
 
-  if (checkIsEmpty(event.target.value))
-    emailErrorText = EMAIL_ERRORS.REQUIRED;
+  if (checkIsEmpty(event.target.value)) emailErrorText = EMAIL_ERRORS.REQUIRED;
 
-  if( !checkValidEmail(event.target.value))
+  if (!checkValidEmail(event.target.value))
     emailErrorText = EMAIL_ERRORS.INVALID;
-
 
   if (emailErrorText) {
     errorField.style.display = "block";
@@ -144,6 +146,13 @@ emailInput.addEventListener("input", function (event) {
 
   updateSubmitButtonDisabled();
 });
+
+// TODO:
+// Min length 6
+// Max length 30
+// Sa scrii mesajul Parola trebuie sa contina o litera mica, daca nu are litera mica
+// sa scrii mesajul Parola trebuie sa contina o litera mare, daca nu are o litera mare
+// Sa scrii mesajul Parola trebuie sa contina o cifra, daca nu are o cifra
 passwordInput.addEventListener("input", function (event) {
   const errorField = event.target.nextElementSibling;
 
@@ -151,17 +160,16 @@ passwordInput.addEventListener("input", function (event) {
   passwordErrorText = "";
 
   if (!checkMinLength(event.target.value, 3))
-  passwordErrorText = PASSWORD_ERRORS.MIN_LENGTH;
+    passwordErrorText = PASSWORD_ERRORS.MIN_LENGTH;
 
   if (!checkMaxLength(event.target.value, 30))
-  passwordErrorText = PASSWORD_ERRORS.MAX_LENGTH;
+    passwordErrorText = PASSWORD_ERRORS.MAX_LENGTH;
 
   if (checkOnlySpaces(event.target.value))
-  passwordErrorText = PASSWORD_ERRORS.ONLY_SPACES;
+    passwordErrorText = PASSWORD_ERRORS.ONLY_SPACES;
 
   if (checkIsEmpty(event.target.value))
-  passwordErrorText = PASSWORD_ERRORS.REQUIRED;
-  
+    passwordErrorText = PASSWORD_ERRORS.REQUIRED;
 
   if (passwordErrorText) {
     errorField.style.display = "block";
@@ -170,6 +178,7 @@ passwordInput.addEventListener("input", function (event) {
 
   updateSubmitButtonDisabled();
 });
+
 confirmPasswordInput.addEventListener("input", function (event) {
   const errorField = event.target.nextElementSibling;
 
@@ -177,20 +186,19 @@ confirmPasswordInput.addEventListener("input", function (event) {
   confirmPasswordErrorText = "";
 
   if (!checkMinLength(event.target.value, 3))
-  confirmPasswordErrorText = PASSWORD_ERRORS.MIN_LENGTH;
+    confirmPasswordErrorText = PASSWORD_ERRORS.MIN_LENGTH;
 
   if (!checkMaxLength(event.target.value, 30))
-  confirmPasswordErrorText = PASSWORD_ERRORS.MAX_LENGTH;
+    confirmPasswordErrorText = PASSWORD_ERRORS.MAX_LENGTH;
 
   if (checkOnlySpaces(event.target.value))
-  confirmPasswordErrorText = PASSWORD_ERRORS.ONLY_SPACES;
+    confirmPasswordErrorText = PASSWORD_ERRORS.ONLY_SPACES;
 
   if (checkIsEmpty(event.target.value))
-  confirmPasswordErrorText = PASSWORD_ERRORS.REQUIRED;
-  if(passwordInput.value !== confirmPasswordInput.value){
+    confirmPasswordErrorText = PASSWORD_ERRORS.REQUIRED;
+  if (passwordInput.value !== confirmPasswordInput.value) {
     confirmPasswordErrorText = PASSWORDS_NOT_THE_SAME;
   }
-  
 
   if (confirmPasswordErrorText) {
     errorField.style.display = "block";
@@ -199,10 +207,6 @@ confirmPasswordInput.addEventListener("input", function (event) {
 
   updateSubmitButtonDisabled();
 });
-
-
-
-
 
 form.addEventListener("submit", async function (event) {
   event.preventDefault();

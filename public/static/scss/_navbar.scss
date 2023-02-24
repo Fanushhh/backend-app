@@ -1,8 +1,4 @@
-a {
-    text-decoration: none;
-    color: $neutral-light-grey;
-    transition: 0.3s ease-in-out;
-}
+
 
 a:hover {
     color: $background-color;
@@ -10,6 +6,7 @@ a:hover {
 ul{
     padding: 0;
 }
+
 
 .nav {
     background-color: $primary-blue;

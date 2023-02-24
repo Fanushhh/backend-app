@@ -1,23 +1,21 @@
-const { generatePasswordHash } = require("../utils/password");
-const { generateActivateToken, generateAuthToken } = require("../utils/token");
-const { getCookieExpireDate } = require("../utils/date");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+import { generateAuthToken, generateActivateToken } from "../../utils/token.js";
+import { generatePasswordHash } from "../../utils/password.js";
+import { getCookieExpireDate } from "../../utils/date.js";
+import { InactiveUserException } from "../../exceptions/inactive-user-exception.js";
+import { AlreadyExistsException } from "../../exceptions/already-exists-exception.js";
+import { MissingFieldException } from "../../exceptions/missing-field-exception.js";
+import { sendEmail } from "../../utils/email.js";
+import { Router } from "express";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import asyncHandler from "express-async-handler";
+import User from "../../models/user.js";
+import PendingUser from "../../models/pending-user.js";
+import UnauthorizedAccessException from "../../exceptions/unauthorized-access-exception.js";
+import UserType from "../../models/user-type.js";
+import UserToken from "../../models/user-token.js";
 
-const {sendEmail} = require('../utils/email')
-const asyncHandler = require("express-async-handler");
-const express = require("express");
-const User = require("../models/user.model");
-const PendingUser = require("../models/pending-user.model");
-const MissingFieldException = require("../exceptions/missing-field-exception");
-const NoEntityFoundException = require("../exceptions/no-entity-found-exception");
-const UnauthorizedAccessException = require("../exceptions/unauthorized-access-exception");
-const InactiveUserException = require("../exceptions/inactive-user-exception");
-const AlreadyExistsException = require("../exceptions/already-exists-exception");
-const UserType = require("../models/user-type.model");
-const UserToken = require("../models/user-token.model");
-
-const router = express.Router();
+const router = Router();
 
 router.post(
   "/register",
@@ -65,7 +63,9 @@ router.post(
 
     const token = generateActivateToken(email);
 
-    console.log(`https://code-learn-v1.herokuapp.com/templates/activate.html?token=${token}`);
+    console.log(
+      `https://code-learn-v1.herokuapp.com/templates/activate.html?token=${token}`
+    );
 
     sendEmail(
       [email],
@@ -129,7 +129,7 @@ router.post(
       throw new UnauthorizedAccessException("Parola invalida!");
 
     const token = generateAuthToken(user.id);
-    console.log(token)
+    console.log(token);
     const newUserToken = new UserToken({
       userId: user._id,
       expireDate: getCookieExpireDate({ days: 7 }),
@@ -185,4 +185,4 @@ router.post(
   })
 );
 
-module.exports = router;
+export default router;

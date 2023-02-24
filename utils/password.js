@@ -1,5 +1,5 @@
-const { getRandomInteger } = require("./random");
-const bcrypt = require("bcrypt");
+import { getRandomInteger } from "./random.js";
+import bcrypt from "bcrypt";
 
 const generatePasswordHash = async (password) =>
   await bcrypt.hash(password, 10);
@@ -19,4 +19,4 @@ const generateRandomPassword = () => {
   return password;
 };
 
-module.exports = { generatePasswordHash, generateRandomPassword };
+export { generatePasswordHash, generateRandomPassword };

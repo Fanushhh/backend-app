@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
@@ -24,4 +24,4 @@ const userTokenSchema = new Schema(
 
 const UserToken = mongoose.model('UserToken', userTokenSchema);
 
-module.exports = UserToken;
+export default UserToken;

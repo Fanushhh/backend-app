@@ -1,7 +1,9 @@
-const asyncHandler = require("express-async-handler");
-const express = require("express");
-const router = express.Router();
-const User = require("../models/user.model");
+
+import User from '../../models/user.js'
+import asyncHandler from 'express-async-handler';
+import {Router} from  'express';
+const router = Router();
+
 
 router.get(
   "",
@@ -146,4 +148,4 @@ router.delete(
   })
 );
 
-module.exports = router;
+export default router;
